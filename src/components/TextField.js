@@ -1,33 +1,51 @@
-import * as React from 'react';
-import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+
 import {Colors, Images} from '../constant';
 import Text from './Text';
 
-function TextField({icon, title, value, showEye, eyeHidden, secured}) {
-  let image = Images.icons.lock;
+function TextField({icon, title, value, secured, keyboard}) {
+  let image = Images.icons.lock,
+    keyboardType = 'default';
+
+  const [showEye, setShowEye] = useState(false);
+
+  switch (keyboard) {
+    case 'email':
+      keyboardType = 'email-address';
+      break;
+  }
 
   return (
     <View style={styles.mainContainer}>
-      <View style={{width: 50, alignItems: 'center'}}>
+      <View style={styles.iconContainer}>
         <Image source={image} style={styles.icon} />
       </View>
-      <View
-        style={{height: '70%', width: 1, backgroundColor: Colors.theme.gray}}
-      />
-      <View style={{flex: 1, marginHorizontal: 10}}>
-        <Text>Title</Text>
-        <Text>{isSecured()}</Text>
+      <View style={styles.splitter} />
+      <View style={styles.textContainer}>
+        <Text textColor="gray" style={styles.title}>
+          {title}
+        </Text>
+        <TextInput
+          value={value}
+          secureTextEntry={secured}
+          style={styles.textInput}
+          keyboardType={keyboardType}
+        />
       </View>
-      {showEye && (
+      {secured && (
         <TouchableOpacity
-          style={{
-            height: '100%',
-            paddingHorizontal: 10,
-            justifyContent: 'center',
-          }}>
+          style={styles.securedContainer}
+          onPress={() => setShowEye(showEye => !showEye)}>
           <Image
             source={Images.icons.eye}
-            style={{width: 20, height: 20}}
+            style={styles.securedIcon(showEye)}
             resizeMode="contain"
           />
         </TouchableOpacity>
@@ -36,26 +54,52 @@ function TextField({icon, title, value, showEye, eyeHidden, secured}) {
   );
 }
 
-function isSecured(text, secured) {
-  if (!secured) {
-    return text;
-  }
-}
-
 const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 5,
     borderRadius: 15,
-    height: 50,
+    height: 60,
     borderColor: Colors.theme.gray,
     borderWidth: 1,
+  },
+  iconContainer: {
+    width: 50,
+    alignItems: 'center',
   },
   icon: {
     height: 25,
     width: 25,
   },
+  splitter: {
+    height: '70%',
+    width: 1,
+    backgroundColor: Colors.theme.gray,
+  },
+  textContainer: {
+    flex: 1,
+    marginHorizontal: 10,
+  },
+  title: {
+    marginVertical: 0,
+    padding: 0,
+  },
+  textInput: {
+    color: Colors.text.black,
+    fontWeight: 'bold',
+    padding: 0,
+  },
+  securedContainer: {
+    height: '100%',
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+  },
+  securedIcon: showEye => ({
+    width: 20,
+    height: 20,
+    tintColor: showEye ? Colors.theme.yellow : Colors.theme.black,
+  }),
 });
 
 export default TextField;
