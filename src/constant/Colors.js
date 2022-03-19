@@ -5,11 +5,11 @@ export default {
     orange: '#FF6243',
     black: '#000000',
     white: '#FFFFFF',
-    grey: '#c9c9c9',
+    gray: '#c9c9c9',
   },
   text: {
     white: '#FFFFFF',
     black: '#000000',
-    grey: '#c9c9c9',
+    gray: '#8e8e8e',
   },
 };

@@ -19,11 +19,11 @@ function Toggle({children, title, value}) {
         onValueChange={toggleSwitch}
         activeText={''}
         inActiveText={''}
-        circleSize={20}
+        circleSize={15}
         renderActiveText={false}
         renderInActiveText={false}
         backgroundActive={Colors.theme.yellow}
-        backgroundInactive={Colors.theme.grey}
+        backgroundInactive={Colors.theme.gray}
         switchBorderRadius={30}
       />
       <Text style={{marginLeft: 5}}>{title}</Text>
