@@ -11,7 +11,7 @@ import {Colors, Images} from '../constant';
 import Text from './Text';
 
 function TextField({icon, title, value, secured, keyboard}) {
-  let image = Images.icons.lock,
+  let image = Images.icons.play,
     keyboardType = 'default';
 
   const [showEye, setShowEye] = useState(false);
@@ -19,6 +19,18 @@ function TextField({icon, title, value, secured, keyboard}) {
   switch (keyboard) {
     case 'email':
       keyboardType = 'email-address';
+      break;
+  }
+
+  switch (icon) {
+    case 'email':
+      image = Images.icons.mail;
+      break;
+    case 'lock':
+      image = Images.icons.lock;
+      break;
+    case 'profile':
+      image = Images.icons.profile;
       break;
   }
 
@@ -69,8 +81,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    height: 25,
-    width: 25,
+    height: 20,
+    width: 20,
   },
   splitter: {
     height: '70%',

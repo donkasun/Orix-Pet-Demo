@@ -14,7 +14,11 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
   }
-  state = {};
+  state = {
+    email: '',
+    password: '',
+    rememberLogin: false,
+  };
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -26,8 +30,19 @@ class LoginScreen extends Component {
           <Text type="description" textColor="gray">
             Enter your email and password
           </Text>
-          <TextField />
-          <TextField showEye />
+          <View style={{height: 20}} />
+          <TextField
+            title="Email"
+            value="some@email.com"
+            icon="email"
+            keyboard="email"
+          />
+          <TextField
+            title="Password"
+            value="somepassword"
+            icon="lock"
+            secured
+          />
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Toggle title="Remember" />
             <TouchableOpacity>

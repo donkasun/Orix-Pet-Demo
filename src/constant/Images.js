@@ -3,7 +3,7 @@ export default {
     arrow: require('./images/arrow.png'),
     call: require('./images/call.png'),
     eye: require('./images/eye.png'),
-    letter: require('./images/letter.png'),
+    mail: require('./images/mail.png'),
     lock: require('./images/lock.png'),
     logo: require('./images/logo.png'),
     play: require('./images/play.png'),
