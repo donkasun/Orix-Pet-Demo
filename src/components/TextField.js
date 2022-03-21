@@ -46,7 +46,7 @@ function TextField({icon, title, value, secured, keyboard}) {
         </Text>
         <TextInput
           value={value}
-          secureTextEntry={secured}
+          secureTextEntry={secured && !showEye}
           style={styles.textInput}
           keyboardType={keyboardType}
         />
