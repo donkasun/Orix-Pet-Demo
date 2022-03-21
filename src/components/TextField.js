@@ -10,7 +10,15 @@ import {
 import {Colors, Images} from '../constant';
 import Text from './Text';
 
-function TextField({icon, title, value, secured, keyboard}) {
+function TextField({
+  icon,
+  title,
+  value,
+  secured,
+  keyboard,
+  onChange,
+  placeholder,
+}) {
   let image = Images.icons.play,
     keyboardType = 'default';
 
@@ -41,14 +49,19 @@ function TextField({icon, title, value, secured, keyboard}) {
       </View>
       <View style={styles.splitter} />
       <View style={styles.textContainer}>
-        <Text textColor="gray" style={styles.title}>
-          {title}
-        </Text>
+        {value ? (
+          <Text textColor="gray" style={styles.title}>
+            {title}
+          </Text>
+        ) : null}
         <TextInput
           value={value}
           secureTextEntry={secured && !showEye}
           style={styles.textInput}
           keyboardType={keyboardType}
+          onChangeText={e => onChange(e)}
+          placeholder={placeholder}
+          placeholderTextColor={Colors.text.lightGray}
         />
       </View>
       {secured && (

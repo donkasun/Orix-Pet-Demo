@@ -7,6 +7,9 @@ function Text({children, type, style, textColor, bold}) {
   let textStyle = {...styles.mainStyle};
 
   switch (type) {
+    case 'large-title':
+      textStyle = {...textStyle, ...styles.largeTitle};
+      break;
     case 'title':
       textStyle = {...textStyle, ...styles.title};
       break;
@@ -39,6 +42,10 @@ function Text({children, type, style, textColor, bold}) {
 const styles = RN.StyleSheet.create({
   mainStyle: {
     color: Colors.text.black,
+  },
+  largeTitle: {
+    fontSize: Configs.textSizes.largeTitle,
+    fontWeight: 'bold',
   },
   title: {
     fontSize: Configs.textSizes.title,

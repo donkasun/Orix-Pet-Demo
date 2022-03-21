@@ -3,10 +3,10 @@ import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 
 import {
   Logo,
-  RoundedButton,
   Text,
-  TextField,
   Toggle,
+  TextField,
+  RoundedButton,
 } from '../../../components';
 import {Colors, Images} from '../../../constant';
 
@@ -21,29 +21,32 @@ class LoginScreen extends Component {
   }
 
   render() {
-    console.log('this.props', this.props);
     return (
       <View style={styles.mainContainer}>
         <View style={styles.logoContainer}>
           <Logo />
         </View>
         <View style={styles.inputContainer}>
-          <Text type="title">Login</Text>
+          <Text type="large-title">Welcome!</Text>
           <Text type="description" textColor="gray">
             Enter your email and password
           </Text>
           <View style={{height: 20}} />
           <TextField
             title="Email"
-            value="some@email.com"
+            value={this.state.email}
             icon="email"
             keyboard="email"
+            onChange={email => this.setState({email})}
+            placeholder="Enter your email here"
           />
           <TextField
             title="Password"
-            value="somepassword"
+            value={this.state.password}
             icon="lock"
             secured
+            onChange={password => this.setState({password})}
+            placeholder="Enter your password here"
           />
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Toggle title="Remember" />
@@ -58,6 +61,7 @@ class LoginScreen extends Component {
   }
 
   buttons() {
+    const {navigation} = this.props;
     return (
       <View style={styles.buttonContainer}>
         <View style={{marginVertical: 10}}>
@@ -67,7 +71,7 @@ class LoginScreen extends Component {
           <Text>Don't have an account?</Text>
           <TouchableOpacity
             style={styles.signupTouch}
-            onPress={() => this.navigateTo('Signup')}>
+            onPress={() => navigation?.navigate('Signup')}>
             <Text style={styles.signupText}>Sign up</Text>
             <Image
               source={Images.icons.play}
@@ -78,10 +82,6 @@ class LoginScreen extends Component {
         </View>
       </View>
     );
-  }
-
-  navigateTo(screen) {
-    this.props.navigation.navigate(screen);
   }
 }
 
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   },
   signupTouch: {
     marginVertical: 10,
+    marginLeft: 5,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
