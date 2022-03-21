@@ -24,31 +24,30 @@ class Signup extends Component {
           <Text type="description" textColor="gray">
             Enter your details to continue
           </Text>
+          <TextField
+            title="Name"
+            value={this.state.name}
+            icon="profile"
+            onChange={name => this.setState({name})}
+            placeholder="Enter your name here"
+          />
+          <TextField
+            title="Email"
+            value={this.state.email}
+            icon="email"
+            keyboard="email"
+            onChange={email => this.setState({email})}
+            placeholder="Enter your email here"
+          />
+          <TextField
+            title="Password"
+            value={this.state.password}
+            icon="lock"
+            secured
+            onChange={password => this.setState({password})}
+            placeholder="Enter your password here"
+          />
         </View>
-
-        <TextField
-          title="Name"
-          value={this.state.name}
-          icon="profile"
-          onChange={name => this.setState({name})}
-          placeholder="Enter your name here"
-        />
-        <TextField
-          title="Email"
-          value={this.state.email}
-          icon="email"
-          keyboard="email"
-          onChange={email => this.setState({email})}
-          placeholder="Enter your email here"
-        />
-        <TextField
-          title="Password"
-          value={this.state.password}
-          icon="lock"
-          secured
-          onChange={password => this.setState({password})}
-          placeholder="Enter your password here"
-        />
         {this.buttons()}
       </View>
     );
@@ -58,9 +57,7 @@ class Signup extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.buttonContainer}>
-        <View style={{marginVertical: 10}}>
-          <RoundedButton title="Sign Up" />
-        </View>
+        <RoundedButton title="Sign Up" />
         <View style={styles.noAccountText}>
           <Text>Already have an account?</Text>
           <TouchableOpacity
@@ -87,26 +84,21 @@ const styles = StyleSheet.create({
 
   // Logo
   logoContainer: {
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 40,
   },
 
   // Inputs
   inputContainer: {
-    justifyContent: 'center',
-    minHeight: 40,
-  },
-
-  // Inputs
-  inputContainer: {
-    justifyContent: 'center',
-    minHeight: 40,
+    flex: 3,
+    justifyContent: 'flex-end',
+    marginBottom: 10,
   },
 
   // Buttons
   buttonContainer: {
-    marginVertical: 10,
+    flex: 2,
   },
   noAccountText: {
     flexDirection: 'row',

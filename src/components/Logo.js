@@ -22,7 +22,7 @@ function Logo() {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    marginVertical: '10%',
+    // marginVertical: '10%',
     alignItems: 'center',
   },
   logoContainer: {

@@ -48,7 +48,7 @@ class LoginScreen extends Component {
             onChange={password => this.setState({password})}
             placeholder="Enter your password here"
           />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.toggleContainer}>
             <Toggle title="Remember" />
             <TouchableOpacity>
               <Text textColor="orange">Forgot Password!</Text>
@@ -64,9 +64,7 @@ class LoginScreen extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.buttonContainer}>
-        <View style={{marginVertical: 10}}>
-          <RoundedButton title="Log in" />
-        </View>
+        <RoundedButton title="Log in" />
         <View style={styles.noAccountText}>
           <Text>Don't have an account?</Text>
           <TouchableOpacity
@@ -93,20 +91,27 @@ const styles = StyleSheet.create({
 
   // Logo
   logoContainer: {
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 40,
   },
 
   // Inputs
   inputContainer: {
-    justifyContent: 'center',
-    minHeight: 40,
+    flex: 3,
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+  },
+  toggleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
   },
 
   // Buttons
   buttonContainer: {
-    marginVertical: 10,
+    flex: 2,
   },
   noAccountText: {
     flexDirection: 'row',
